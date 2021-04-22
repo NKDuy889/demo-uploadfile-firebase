@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { AngularFileUploaderModule } from "angular-file-uploader";
 import { AngularFireStorageModule } from '@angular/fire/storage'
 import { AngularFireModule } from '@angular/fire'
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { AngularFireModule } from '@angular/fire'
       measurementId: "G-8NES4NHE9X"
     }),
     AngularFireStorageModule,
+    HttpClientModule,
 
   ],
   providers: [],

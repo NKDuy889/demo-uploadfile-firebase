@@ -1,3 +1,5 @@
 <label for="Image">Image file</label>
-<input type="file" (change)="upLoad($event)" accept="*.png.jpg" id="">
+<input type="file" (change)="upLoad($event)" [multiple]="true" accept="*.png.jpg" id="">
 <button (click)="uploadImage()">Upload</button>
+{{uploadProgress}}
+<img src="https://firebasestorage.googleapis.com/v0/b/pro1-54433.appspot.com/o/files0.18640518154345842a3ec49551c2622a935f3ad0950591b6c.jpg?alt=media&token=f86a7acd-b1bf-4e2f-971c-994e3931f360">
