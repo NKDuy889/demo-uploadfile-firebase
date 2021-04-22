@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {AngularFireStorage} from '@angular/fire/storage'
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'test-upload-file-angular';
+  path:string ="";
+
+  constructor(private af:AngularFireStorage){}
+
+  upLoad($event: any){
+    this.path = $event.target.files[0];
+  }
+
+  uploadImage(){
+    console.log(this.path);
+    this.af.upload("/files" + Math.random() + this.path, this.path);
+  }
 }
