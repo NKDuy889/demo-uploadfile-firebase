@@ -13,6 +13,8 @@ export class AppComponent implements OnInit {
   file = null;
   name: string[] = [];
   uploadProgress: Observable<number | undefined> | undefined;
+  downLoadURL: Observable<string> | undefined
+  fb: any;
 
   constructor(private af: AngularFireStorage,
               private http: HttpClient) {
@@ -43,15 +45,21 @@ export class AppComponent implements OnInit {
         task.percentageChanges().subscribe((e) => {
           console.log(e);
         });
-        // task.then(() => {
-        //   fileRef.getDownloadURL().subscribe((url) => {
-        //     this.http.get(`https://firebasestorage.googleapis.com/v0/b/pro1-54433.appspot.com/o/files0.18640518154345842a3ec49551c2622a935f3ad0950591b6c.jpg?alt=media&token=f86a7acd-b1bf-4e2f-971c-994e3931f360`).subscribe(res => {
-        //       console.log(res);
-        //     });
-        //   });
-        // });
+        task.then(() => {
+          this.downLoadURL =  fileRef.getDownloadURL();
+          this.downLoadURL.subscribe(url => {
+            if(url){
+              this.fb = url;
+            }
+            console.log(this.fb);
+          })
+          // fileRef.getDownloadURL().subscribe((url) => {
+          //   this.http.get(url).subscribe(res => {
+          //     console.log(url);
+          //   });
+          // });
+        });
       }
     })
-
   }
 }
